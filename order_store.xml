@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<orderstore xmlns="https://www.w3schools.com" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="order.xsd">
+  <order>
+    <oid>1</oid>
+    <pid>p1</pid>
+    <purchases>
+      <id>1</id>
+      <quantity>2</quantity>
+    </purchases>
+    <purchases>
+      <id>4</id>
+      <quantity>1</quantity>
+    </purchases>
+    <purchases>
+      <id>2</id>
+      <quantity>2</quantity>
+    </purchases>
+  </order>
+
+  <order>
+    <oid>2</oid>
+    <pid>p2</pid>
+    <purchases>
+      <id>3</id>
+      <quantity>4</quantity>
+    </purchases>
+    <purchases>
+      <id>2</id>
+      <quantity>1</quantity>
+    </purchases>
+  </order>
+
+  <order>
+    <oid>3</oid>
+    <pid>p2</pid>
+    <purchases>
+      <id>2</id>
+      <quantity>1</quantity>
+    </purchases>
+  </order>
+</orderstore>

@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Soccer Store</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="bundle.css">
+</head>
+
+<body class="mdc-typography">
+    <header class="mdc-top-app-bar mdc-top-app-bar--fixed">
+        <div class="mdc-top-app-bar__row">
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start" href="index.html">
+                <span class="mdc-top-app-bar__title">
+                    The Football Store
+                </span>
+            </section>
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+                <div class="mdc-tab-bar" role="tablist">
+                    <div class="mdc-tab-scroller">
+                        <div class="mdc-tab-scroller__scroll-area mdc-tab-scroller__scroll-area--scroll">
+                            <div class="mdc-tab-scroller__scroll-content">
+                                <a class="mdc-tab nav-link" role="tab" aria-selected="false" tabindex="-1" href="boots.html">
+                                    <span class="mdc-tab__content">
+                                        <span class="mdc-tab__text-label">
+                                            Boots
+                                        </span>
+                                        <span class="mdc-tab-indicator">
+                                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                                        </span>
+                                    </span>
+                                    <span class="mdc-tab__ripple mdc-ripple-upgraded"></span>
+                                </a>
+                                <a class="mdc-tab nav-link" role="tab" aria-selected="false" tabindex="0" href="customers.html">
+                                    <span class="mdc-tab__content">
+                                        <span class="mdc-tab__text-label">
+                                            Customers
+                                        </span>
+                                        <span class="mdc-tab-indicator">
+                                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                                        </span>
+                                    </span>
+                                    <span class="mdc-tab__ripple mdc-ripple-upgraded"></span>
+                                </a>
+                                <a class="mdc-tab nav-link" role="tab" aria-selected="false" tabindex="0" href="orders.html">
+                                    <span class="mdc-tab__content">
+                                        <span class="mdc-tab__text-label">
+                                            Orders
+                                        </span>
+                                        <span class="mdc-tab-indicator">
+                                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                                        </span>
+                                    </span>
+                                    <span class="mdc-tab__ripple mdc-ripple-upgraded"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </header>
+    <!--     
+    Queries to make:<br />
+   
+ -->
+
+    <div class="content-area">
+        <div class="content">
+            <h5 class="mdc-typography--headline5">Tasks:</h5>
+            <br />
+            1. Create a firebase account<br />
+            2. Add base data of order table to firebase <br />
+            3. Plan schema while doing so<br />
+        </div>
+        <div class="content">
+            <h5 class="mdc-typography--headline5">1. Fetch All Orders of a Person by PersonID</h5>
+            <div class="input">
+                <div class="mdc-text-field mdc-text-field--outlined" style="width: 100%;">
+                    <input type="text" id="fetchAllOrdersByPersonID--input" class="mdc-text-field__input" value="p1" />
+                    <label for="fetchAllOrdersByPersonID--input" class="mdc-floating-label">
+                        Person ID
+                    </label>
+                    <div class="mdc-notched-outline">
+                        <svg>
+                            <path class="mdc-notched-outline__path" />
+                        </svg>
+                    </div>
+                    <div class="mdc-notched-outline__idle"></div>
+                </div>
+                <button class="mdc-icon-button material-icons" onclick='getOrdersOfPerson("fetchAllOrdersByPersonID")'>search</button>
+            </div>
+            <br /><br />
+            <div class="output" id="fetchAllOrdersByPersonID--output"></div>
+        </div>
+
+        <div class="content">
+            <h5 class="mdc-typography--headline5">2. Fetch All Orders</h5>
+            <div class="input">
+                <div class="mdc-text-field mdc-text-field--outlined" style="width: 100%;">
+                    <input disabled type="text" id="fetchAllOrders--input" class="mdc-text-field__input" value="" />
+                    <label for="fetchAllOrders--input" class="mdc-floating-label">
+                        Input Nothing
+                    </label>
+                    <div class="mdc-notched-outline">
+                        <svg>
+                            <path class="mdc-notched-outline__path" />
+                        </svg>
+                    </div>
+                    <div class="mdc-notched-outline__idle"></div>
+                </div>
+                <button class="mdc-icon-button material-icons" onclick='fetchAllOrders("fetchAllOrders")'>search</button>
+            </div>
+            <br /><br />
+            <div class="output" id="fetchAllOrders--output"></div>
+        </div>
+
+
+        <div class="content">
+            <h5 class="mdc-typography--headline5">3. Get orders where number of boots purchase is greater than 'x'</h5>
+            <div class="input">
+                <div class="mdc-text-field mdc-text-field--outlined" style="width: 100%;">
+                    <input type="text" id="numberOfBoots--input" class="mdc-text-field__input" value="3" />
+                    <label for="numberOfBoots--input" class="mdc-floating-label">
+                        Input the 'x' here (number)
+                    </label>
+                    <div class="mdc-notched-outline">
+                        <svg>
+                            <path class="mdc-notched-outline__path" />
+                        </svg>
+                    </div>
+                    <div class="mdc-notched-outline__idle"></div>
+                </div>
+                <button class="mdc-icon-button material-icons" onclick='numberOfBoots("numberOfBoots")'>search</button>
+            </div>
+            <br /><br />
+            <div class="output" id="numberOfBoots--output"></div>
+        </div>
+
+
+        <div class="content">
+            <h5 class="mdc-typography--headline5">4. Get all orders where only 'x' type of boot is purchased</h5>
+            <div class="input">
+                <div class="mdc-text-field mdc-text-field--outlined" style="width: 100%;">
+                    <input type="text" id="BootType--input" class="mdc-text-field__input" value="1" />
+                    <label for="BootType--input" class="mdc-floating-label">
+                        Input the 'x' here (number)
+                    </label>
+                    <div class="mdc-notched-outline">
+                        <svg>
+                            <path class="mdc-notched-outline__path" />
+                        </svg>
+                    </div>
+                    <div class="mdc-notched-outline__idle"></div>
+                </div>
+                <button class="mdc-icon-button material-icons" onclick='BootType("BootType")'>search</button>
+            </div>
+            <br /><br />
+            <div class="output" id="BootType--output"></div>
+        </div>
+
+        <div class="content">
+            <h5 class="mdc-typography--headline5">5. Add an order</h5>
+            <div class="input">
+                <div class="mdc-text-field mdc-text-field--outlined" style="width: 100%;">
+                    <input type="text" id="addOrder--input" class="mdc-text-field__input" />
+                    <label for="addOrder--input" class="mdc-floating-label">
+                        Pass JSON here
+                    </label>
+                    <div class="mdc-notched-outline">
+                        <svg>
+                            <path class="mdc-notched-outline__path" />
+                        </svg>
+                    </div>
+                    <div class="mdc-notched-outline__idle"></div>
+                </div>
+                <button class="mdc-icon-button material-icons" onclick='addOrder("addOrder")'>search</button>
+            </div>
+            <br /><br />
+            <div class="output" id="addOrder--output"></div>
+        </div>
+
+        <!-- Firebase App is always required and must be first -->
+        <script src="https://www.gstatic.com/firebasejs/5.4.0/firebase-app.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <!-- Add additional services that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/5.4.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.4.0/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.4.0/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.4.0/firebase-messaging.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.4.0/firebase-functions.js"></script>
+
+        <!-- Comment out (or don't include) services that you don't want to use -->
+        <!-- <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-storage.js"></script> -->
+        <script src="xml_helper.js"></script>
+        <script src="bundle.js" async></script>
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <script src="table.js"></script>
+
+        <script>
+            let boot = [];
+            let person = [];
+            var config = {
+                apiKey: "AIzaSyB7FdAheWEoaBXBu-KIgSFRJ2JE-IODq00",
+    authDomain: "orders-a9411.firebaseapp.com",
+    databaseURL: "https://orders-a9411.firebaseio.com",
+    projectId: "orders-a9411",
+    storageBucket: "orders-a9411.appspot.com",
+            messagingSenderId: "1046024091594"
+  };
+
+
+            };
+            firebase.initializeApp(config);
+            var database = firebase.database();
+
+            const getOrdersOfPerson = (id) => {
+                myOrders = [];
+                elem = document.getElementById(`${id}--output`);
+                elem.innerHTML = "";
+                firebase.database().ref("orderstore").orderByChild("pid").equalTo(document.getElementById(`${id}--input`).value)
+                    .on(
+                        'value', (data) => {
+                            x = data.val();
+                            console.log(x);
+                            if (x === null) {
+                                elem.innerHTML = "No such person!!";
+                            } else {
+                                // let output = createTableObj(x),
+                                //     outputDiv = document.getElementById(id + '--output');
+                                // showOutput(output, outputDiv);
+                            }
+                        });
+            }
+            const fetchAllOrders = (id) => {
+                myOrders = [];
+                elem = document.getElementById(`${id}--output`);
+                elem.innerHTML = "";
+                firebase.database().ref("orderstore").orderByChild("pid")
+                    .on(
+                        'value', (data) => {
+                            x = data.val();
+                            console.log(x);
+                            if (x === null) {
+                                elem.innerHTML = "No such person!!";
+                            } else {
+                                myOrders.push(x);
+                                // let output = createTableObj(x),
+                                //     outputDiv = document.getElementById(id + '--output');
+                                // showOutput(output, outputDiv);
+                            }
+                            console.log(myOrders)
+                        });
+                        
+            }
+            const BootType = (id) => {
+                myOrders = [];
+                val=document.getElementById(`${id}--input`).value;
+                elem = document.getElementById(`${id}--output`);
+                elem.innerHTML = "";
+                firebase.database().ref("orderstore").on('value', (data) =>{
+                    x=data.val();
+                    len=Object.keys(x).length;
+                    for(i=0;i<len;i++ ){
+                        var y=0;
+                        
+                        firebase.database().ref("orderstore/O"+(i+1)+"/purchases")
+                            .on(
+                                'value', (data) => {
+                                    x = data.val();
+                                    console.log(x);
+                                    if (x === null) {
+                                        elem.innerHTML = "No such person!!";
+                                    } else {
+                                        Array.from(x).map(data => {
+                                            if(data.id===val){
+                                            firebase.database().ref("orderstore/O"+(i+1)).on('value', (data) =>{
+                                                myOrders.push(data.val());
+                                            });
+                                            return;
+                                        }
+                                        });
+                                        
+                                        console.log(myOrders);
+                                        // let output = createTableObj(x),
+                                        //     outputDiv = document.getElementById(id + '--output');
+                                        // showOutput(output, outputDiv);
+                                    }
+                            });
+                    }
+                });
+                
+            }
+
+            const addOrder = (id) => {
+                myOrders = [];
+                elem = document.getElementById(`${id}--output`);
+                elem.innerHTML = "";
+                var number=0;
+                val=document.getElementById(`${id}--input`).value;
+                    new Promise( (resolve,reject) => {
+                        firebase.database().ref("orderstore").limitToLast(1).on('value',(data)=>{
+                        var x=data.val();
+                        number=parseInt(Object.keys(x)[0].substring(1))+1;
+                        resolve(number);
+                        })
+                    }).then((data)=>{
+                        firebase.database().ref("orderstore/O"+number).set(JSON.parse(val));
+                        firebase.database().ref("orderstore").on('value', (data) =>{
+                            console.log(data.val());
+                    
+                        })
+                    });
+                
+               
+               
+
+            }
+            const numberOfBoots = (id) => {
+                myOrders = [];
+                val=document.getElementById(`${id}--input`).value;
+                elem = document.getElementById(`${id}--output`);
+                elem.innerHTML = "";
+                firebase.database().ref("orderstore").on('value', (data) =>{
+                    x=data.val();
+                    len=Object.keys(x).length;
+                    for(i=0;i<len;i++ ){
+                        var y=0;
+                        
+                        firebase.database().ref("orderstore/O"+(i+1)+"/purchases")
+                            .on(
+                                'value', (data) => {
+                                    x = data.val();
+                                    console.log(x);
+                                    if (x === null) {
+                                        elem.innerHTML = "No such person!!";
+                                    } else {
+                                        y=0;
+                                        Array.from(x).map(data => {
+                                            y+=parseInt(data.quantity);
+                                        });
+                                        if(y>=val)
+                                            firebase.database().ref("orderstore/O"+(i+1)).on('value', (data) =>{
+                                                myOrders.push(data.val());
+                                        });
+                                        console.log(myOrders);
+                                        // let output = createTableObj(x),
+                                        //     outputDiv = document.getElementById(id + '--output');
+                                        // showOutput(output, outputDiv);
+                                    }
+                            });
+                    }
+                });
+            }
+        </script>
+</body>
+
+</html>

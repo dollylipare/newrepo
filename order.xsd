@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://www.w3schools.com" 
+    xmlns="https://www.w3schools.com" elementFormDefault="qualified">
+
+    <xs:complexType name="purchase">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" maxOccurs="1"/>
+            <xs:element name="quantity" type="xs:string" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="orderinfo">
+        <xs:sequence>
+            <xs:element name="oid" type="xs:string" maxOccurs="1"/>
+            <xs:element name="pid" type="xs:string" maxOccurs="1"/>
+            <xs:element name="purchases" type="purchase" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    
+
+    <xs:element name="orderstore">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="order" type="orderinfo" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

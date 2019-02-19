@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<bootstore xmlns="https://www.w3schools.com" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="boot.xsd">
+  <boot>
+    <id>b1</id>
+    <name>adidas Copa Gloro 17 FG</name>
+    <description>White/Silver Metallic/Red</description>
+    <cost>$300</cost>
+  </boot>
+  <boot>
+    <id>b2</id>
+    <name>Nike Premier II SG</name>
+    <description>Team Red/Metallic Silver/Team Red</description>
+    <cost>$350</cost>
+  </boot>
+  <boot>
+    <id>b3</id>
+    <name>adidas Predator Telstar 18+ FG</name>
+    <description>Core Black/Metallic Copper/Solid Grey</description>
+    <cost>$400</cost>
+  </boot>
+  <boot>
+    <id>b4</id>
+    <name>Nike Hypervenom Phantom III Elite DF</name>
+    <description>Light Crimson/Metallic Dark Grey</description>
+    <cost>$400</cost>
+  </boot>
+  <boot>
+    <id>b5</id>
+    <name>adidas World Cup SG</name>
+    <description>Black/White</description>
+    <cost>$375</cost>
+  </boot>
+</bootstore>
