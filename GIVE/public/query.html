@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .pos{
+        display:inline-block;
+        margin-left: 3%;
+        text-align: center;
+        width:30%;
+    }
+    </style>
+</head>
+
+<body>
+    <label>Query</label>
+    <textarea rows=1 cols=70 id="query">SELECT * FROM lorem4</textarea><br /><br />
+    <input type="submit" onclick="loadData()">
+    <div id="demo"></div>
+</body>
+
+<script>
+    const loadData = () => {
+        query = document.getElementById("query").value;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                const d = JSON.parse(this.responseText);
+                console.log(d);
+                for (let i = 0; i < d.data.length; i += 1) {
+                    const divElem = document.createElement('div');
+                    divElem.classList.add("pos");
+                    const imgElem = document.createElement('img');
+                    const nameElem = document.createElement('p');
+                    const descElem = document.createElement('p');
+                    const costElem = document.createElement('p');
+                    const base64String = d.data[i].image
+                    imgElem.src = `data:image/jpeg;base64, ${base64String}`;
+                    imgElem.height = 100;
+                    nameElem.innerHTML = `name: ${d.data[i].name}`;
+                    descElem.innerHTML = `id: ${d.data[i].id}`
+                    costElem.innerHTML = `price:  $${d.data[i].price}`;
+                    divElem.appendChild(imgElem);
+                    divElem.appendChild(nameElem);
+                    divElem.appendChild(descElem);
+                    divElem.appendChild(costElem);
+                    document.getElementById("demo").appendChild(divElem);
+                }
+            }
+        };
+        xhttp.open("POST", `http://localhost:4000/fetch?query=${query}`, true);
+        xhttp.send();
+    }
+</script>
+
+</html>
